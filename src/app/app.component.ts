@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
+import {lorem} from 'faker';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'optionalProj';
+  randomText = lorem.sentence();
+  textInput = '';
+  winningNumber = 0;
+
+  detectTextInput(value: string) {
+    this.textInput = value;
+  }
+
+  compare(randomLetter: string, inputLetter: string) {
+    if (!inputLetter) {
+      return 'pending';
+    }
+    return randomLetter === inputLetter ? 'correct' : 'incorrect';
+  }
+
 }
+
+
